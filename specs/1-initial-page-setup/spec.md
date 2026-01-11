@@ -8,6 +8,12 @@ Create the initial page and layout for MoneyManager focused on transaction track
 
 MoneyManager is a personal finance app inspired by Quicken Simplifi. Initially we implement only the transaction tracking experience so users can view and browse transactions by account. The goal of this feature is to provide an accessible, responsive layout and clear account/transaction navigation so later features (filters, editing, import) can be added.
 
+## Clarifications
+
+### Session 2026-01-10
+
+- Q: Data source for initial UI fixtures? → A: C — Seed and read from browser `localStorage` (persists between runs).
+
 **Actors**
 
 - Primary: End user (single-user mode)
@@ -59,7 +65,7 @@ Each scenario includes keyboard-accessible equivalents (focus to menu expands, a
 **Assumptions**
 
 - Single-user (no authentication) for initial iteration.
-- Backend/data layer will provide transactions and accounts endpoints later; for initial UI, a local mock or fixture dataset is acceptable.
+- Backend/data layer will provide transactions and accounts endpoints later; for initial UI, seed browser `localStorage` with a fixture dataset (persisted between runs).
 - Menu collapse/expand is instantaneous with a short transition; no persistent collapsed state is required for v1.
 
 **Out of Scope**
