@@ -17,21 +17,37 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: TypeScript ~5.9+, React 19+  
+**Primary Dependencies**: React, shadcn/ui, Tailwind CSS, TanStack (Query, Router, Table), localStorage (fixture data)  
+**Storage**: Browser localStorage (for initial UI fixtures)  
+**Testing**: Jest, React Testing Library  
+**Target Platform**: Desktop and tablet browsers (responsive, accessibility required); mobile out of scope for v1  
+**Project Type**: Web (SPA, src/)  
+**Performance Goals**: Initial load and render of shell + first page of transactions within 1s on dev machine  
+**Constraints**: Accessibility (WCAG 2.1 AA), responsive design, all interactive elements keyboard accessible, no use of !important in CSS, all new code must include unit tests, use CSS Modules for styles  
+**Scale/Scope**: Single-user, no authentication, initial focus on transaction tracking UI (accounts tree, transactions list, left menu shell)
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+**GATE 1: Accessibility & Responsive Design (NON-NEGOTIABLE)**
+  - SATISFIED: All UI and components are designed to meet WCAG 2.1 AA and are responsive for desktop/tablet.
+
+**GATE 2: Testing & Quality (NON-NEGOTIABLE)**
+  - SATISFIED: All code will be covered by Jest + React Testing Library, with CI integration and behavioral tests.
+
+**GATE 3: Type Safety & Modern Tooling**
+  - SATISFIED: TypeScript ~5.9+ and React 19+ with strict settings; TanStack libraries for data, routing, tables.
+
+**GATE 4: Component Library & Styling**
+  - SATISFIED: shadcn/ui, Tailwind CSS, CSS Modules, no !important, all components accessible and unit-tested.
+
+**GATE 5: Versioning, Observability & Simplicity**
+  - SATISFIED: Semantic versioning, observability primitives, and simple, justified solutions.
+
+**Additional Constraints:**
+  - SATISFIED: All constraints from constitution are met in design and plan.
 
 ## Project Structure
 

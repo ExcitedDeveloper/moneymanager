@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: MoneyManager Initial Page API
+  version: 0.1.0
+paths:
+  /accounts:
+    get:
+      summary: Get all accounts
+      responses:
+        '200':
+          description: List of accounts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+  /transactions:
+    get:
+      summary: Get all transactions (optionally filtered by account)
+      parameters:
+        - in: query
+          name: account_id
+          schema:
+            type: string
+          required: false
+          description: Filter transactions by account
+      responses:
+        '200':
+          description: List of transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        parent_id:
+          type: string
+          nullable: true
+        balance:
+          type: number
+      required: [id, name, type, balance]
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+        date:
+          type: string
+          format: date
+        payee:
+          type: string
+        category:
+          type: string
+        memo:
+          type: string
+          nullable: true
+        amount:
+          type: number
+        account_id:
+          type: string
+        cleared_status:
+          type: string
+          enum: [cleared, pending, uncleared]
+      required: [id, date, payee, amount, account_id, cleared_status]
